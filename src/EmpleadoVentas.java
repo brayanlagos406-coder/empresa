@@ -1,20 +1,16 @@
 public class EmpleadoVentas extends Empleado {
 
     private double totalVentas;
-    private  double comision;
+    private double porcentajeComision;
 
     public EmpleadoVentas() {
     }
 
-    public EmpleadoVentas(double totalVentas, double comision) {
+    public EmpleadoVentas(String id, String nombre, int edad, double salarioBase, double totalVentas, double porcentajeComision) {
+        super(id, nombre, edad, salarioBase);
         this.totalVentas = totalVentas;
-        this.comision = comision;
-    }
+        this.porcentajeComision = porcentajeComision;
 
-    public EmpleadoVentas(String nombre, int edad, double salarioBase, double totalVentas, double comision) {
-        super(nombre, edad, salarioBase);
-        this.totalVentas = totalVentas;
-        this.comision = comision;
     }
 
     public double getTotalVentas() {
@@ -25,29 +21,37 @@ public class EmpleadoVentas extends Empleado {
         this.totalVentas = totalVentas;
     }
 
-    public double getComision() {
-        return comision;
+    public double getPorcentajeComision() {
+        return porcentajeComision;
     }
 
-    public void setComision(double comision) {
-        this.comision = comision;
+    public void setPorcentajeComision(double porcentajeComision) {
+        this.porcentajeComision = porcentajeComision;
     }
 
     @Override
     public String toString() {
-        return super.toString()+ "EmpleadoVentas{" +
+        return "EmpleadoVentas{" +
                 "totalVentas=" + totalVentas +
-                ", comision=" + comision +
+                ", porcentajeComision=" + porcentajeComision +
+                ", identificacion='" + identificacion + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", salarioBase=" + salarioBase +
                 '}';
     }
-    public void mostrarInfo(){
-
-        System.out.println("nombre" + nombre);
-        System.out.println("edad" + edad);
-        System.out.println("salarioBase" + salarioBase);
-        System.out.println("comision" + comision);
-        System.out.println("totalventas" + totalVentas);
 
 
+    public double calcularSalario() {
+        double comision = totalVentas * porcentajeComision;
+        return salarioBase + comision;
+    }
+
+
+    public void mostrarInfo() {
+        super.mostrarInfo();
+        System.out.println("Total ventas: " + totalVentas);
+        System.out.println("Porcentaje comisión: " + porcentajeComision);
+        System.out.println("Salario Final: " + calcularSalario());
     }
 }

@@ -1,20 +1,22 @@
 public class Empleado {
 
+    protected String identificacion;
     protected String nombre;
     protected int edad;
     protected double salarioBase;
 
-
-    //contructures y demas
-
-
     public Empleado() {
     }
 
-    public Empleado(String nombre, int edad, double salarioBase) {
+    public Empleado(String identificacion, String nombre, int edad, double salarioBase) {
+        this.identificacion = identificacion;
         this.nombre = nombre;
         this.edad = edad;
         this.salarioBase = salarioBase;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
     }
 
     public String getNombre() {
@@ -43,34 +45,34 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return   "Empleado{" +
-                "nombre='" + nombre + '\'' +
+        return "Empleado{" +
+                "identificacion='" + identificacion + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", edad=" + edad +
                 ", salarioBase=" + salarioBase +
                 '}';
     }
 
-    public void mostrarInfo(){
-
-        System.out.println("nombre" + nombre);
-        System.out.println("edad" + edad);
-        System.out.println("salarioBase" + salarioBase);
-
-
+    public void mostrarInfo() {
+        System.out.println("ID: " + identificacion);
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad);
+        System.out.println("Salario Base: " + salarioBase);
     }
 
+    public double calcularSalario() {
+        return salarioBase;
+    }
 
+    public boolean esMayorEdad() {
+        return edad >= 18;
+    }
 
+    public void aumentarSalario(double porcentaje) {
+        salarioBase += salarioBase * porcentaje / 100;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    public String getIdentificacion() {
+        return identificacion;
+    }
 }

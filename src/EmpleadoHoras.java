@@ -1,27 +1,14 @@
-public class EmpleadoHoras extends Empleado{
+public class EmpleadoHoras extends Empleado {
 
-    private double valorHora ;
     private int horasTrabajadas;
+    private double valorHora;
 
     public EmpleadoHoras() {
     }
 
-    public EmpleadoHoras(double valorHora, int horasTrabajadas) {
-        this.valorHora = valorHora;
+    public EmpleadoHoras(String id, String nombre, int edad, double salarioBase, int horasTrabajadas, double valorHora) {
+        super(id, nombre, edad, salarioBase);
         this.horasTrabajadas = horasTrabajadas;
-    }
-
-    public EmpleadoHoras(String nombre, int edad, double salarioBase, double valorHora, int horasTrabajadas) {
-        super(nombre, edad, salarioBase);
-        this.valorHora = valorHora;
-        this.horasTrabajadas = horasTrabajadas;
-    }
-
-    public double getValorHora() {
-        return valorHora;
-    }
-
-    public void setValorHora(double valorHora) {
         this.valorHora = valorHora;
     }
 
@@ -33,24 +20,36 @@ public class EmpleadoHoras extends Empleado{
         this.horasTrabajadas = horasTrabajadas;
     }
 
+    public double getValorHora() {
+        return valorHora;
+    }
+
+    public void setValorHora(double valorHora) {
+        this.valorHora = valorHora;
+    }
+
     @Override
     public String toString() {
-        return super.toString()+ "EmpleadoHoras{" +
-                "valorHora=" + valorHora +
-                ", horasTrabajadas=" + horasTrabajadas +
+        return "EmpleadoHoras{" +
+                "horasTrabajadas=" + horasTrabajadas +
+                ", valorHora=" + valorHora +
+                ", identificacion='" + identificacion + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", salarioBase=" + salarioBase +
                 '}';
     }
-    public void mostrarInfo(){
-
-        System.out.println("nombre" + nombre);
-        System.out.println("edad" + edad);
-        System.out.println("salarioBase" + salarioBase);
-        System.out.println("horasTrabajadas" + horasTrabajadas);
-        System.out.println("valorHora" + valorHora);
 
 
+    public double calcularSalario() {
+        return horasTrabajadas * valorHora;
+    }
 
 
+    public void mostrarInfo() {
+        super.mostrarInfo();
+        System.out.println("Horas trabajadas: " + horasTrabajadas);
+        System.out.println("Valor hora: " + valorHora);
+        System.out.println("Salario Final: " + calcularSalario());
     }
 }
-

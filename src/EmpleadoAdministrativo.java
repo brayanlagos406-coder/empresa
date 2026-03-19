@@ -5,13 +5,10 @@ public class EmpleadoAdministrativo extends Empleado {
     public EmpleadoAdministrativo() {
     }
 
-    public EmpleadoAdministrativo(double bonificacion) {
+    public EmpleadoAdministrativo(String id, String nombre, int edad, double salarioBase, double bonificacion) {
+        super(id, nombre, edad, salarioBase);
         this.bonificacion = bonificacion;
-    }
 
-    public EmpleadoAdministrativo(String nombre, int edad, double salarioBase, double bonificacion) {
-        super(nombre, edad, salarioBase);
-        this.bonificacion = bonificacion;
     }
 
     public double getBonificacion() {
@@ -24,20 +21,24 @@ public class EmpleadoAdministrativo extends Empleado {
 
     @Override
     public String toString() {
-        return super.toString()+ "EmpleadoAdministrativo{" +
+        return "EmpleadoAdministrativo{" +
                 "bonificacion=" + bonificacion +
+                ", identificacion='" + identificacion + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", salarioBase=" + salarioBase +
                 '}';
     }
 
 
-    public void mostrarInfo(){
-
-        System.out.println("nombre" + nombre);
-        System.out.println("edad" + edad);
-        System.out.println("salarioBase" + salarioBase);
-        System.out.println("bonificacion" + bonificacion);
-
-
+    public double calcularSalario() {
+        return salarioBase + bonificacion;
     }
 
+
+    public void mostrarInfo() {
+        super.mostrarInfo();
+        System.out.println("Bonificación: " + bonificacion);
+        System.out.println("Salario Final: " + calcularSalario());
+    }
 }
